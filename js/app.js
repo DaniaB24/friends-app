@@ -38,7 +38,7 @@ function increaseSortByName() {
     if (a.name.first.toLowerCase() > b.name.first.toLowerCase()) return 1;
     return 0;
   });
-  displayUser(sortedIncrease);
+  displayUsers(sortedIncrease);
 }
 function decreaseSortByName() {
   let sortedDecrease = friends.sort(function (a, b) {
@@ -46,7 +46,7 @@ function decreaseSortByName() {
     if (a.name.first.toLowerCase() < b.name.first.toLowerCase()) return 1;
     return 0;
   });
-  displayUser(sortedDecrease);
+  displayUsers(sortedDecrease);
 }
 function sortFriends() {
   document.querySelector(".filter_menu").addEventListener("click", (event) => {
@@ -86,8 +86,11 @@ function filterByGender() {
   arrFiltered = friends.filter((item) =>
     checkboxes.some((gender) => item.gender === gender.value)
   );
+  console.log(arrFiltered)
+  console.log(checkboxes)
   displayUsers(arrFiltered);
 }
+
 function selectFriends() {
   filterByGender();
   if (arrFiltered.length == 0) {
@@ -113,3 +116,8 @@ function searchFriends() {
     console.log(filteredFriends);
   });
 }
+
+checkboxesGender.addEventListener('change', (e) => {
+  const target = e.target;
+  selectFriends();
+})

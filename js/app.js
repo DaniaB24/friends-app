@@ -80,52 +80,36 @@ function decreaseSortByAge() {
   displayUsers(sortedAgeDecrease);
 }
 function filterByGender() {
-  let checkboxes = Array.from(document.querySelectorAll(".gender_checkbox:checked"));
-  arrFiltered = friends.filter(item => 
-  checkboxes.some((gender) => item.gender === gender.value));
+  let checkboxes = Array.from(
+    document.querySelectorAll(".gender_checkbox:checked")
+  );
+  arrFiltered = friends.filter((item) =>
+    checkboxes.some((gender) => item.gender === gender.value)
+  );
   displayUsers(arrFiltered);
 }
 function selectFriends() {
   filterByGender();
-  if(arrFiltered.length == 0) {
+  if (arrFiltered.length == 0) {
     cardOfHumans.innerHTML = "";
-  }
-  else {
+  } else {
     displayUsers(arrFiltered);
   }
 }
 
-// checkboxesGender.addEventListener('change', (e) => {
-//   const target = e.target;
-//   selectFriends();
-// })
-
-// function searchFriends() {
-//   let searchedFriends = arrFiltered.filter(item => {
-//     item.name === name.first));
-//   })
-// displayUsers(searchedFriends);
-// }
-function searchFriends() {
-searchBar.addEventListener('keyup', (e) => {
-  let searchedFriend = e.target.value.toLowerCase();
-  console.log(searchedFriend)
-  let filteredFriends = arrFiltered.filter((item) => {
-    return (
-            item.name.first.toLowerCase().includes(searchedFriend) || 
-            item.name.last.toLowerCase().includes(searchedFriend)
-    );
-  })
-  displayUsers(filteredFriends);
-  console.log(filteredFriends)
-});
-}
 // SEARCH
 
-  //   console.log(searchString)
-  //   const filteredFriends = friends.filter((result => {
-  //     return (result.name.includes(searchString));
-  //   }));
-  //   displayUser(filteredFriends);
-  // });
-
+function searchFriends() {
+  searchBar.addEventListener("keyup", (e) => {
+    let searchedFriend = e.target.value.toLowerCase();
+    console.log(searchedFriend);
+    let filteredFriends = arrFiltered.filter((item) => {
+      return (
+        item.name.first.toLowerCase().includes(searchedFriend) ||
+        item.name.last.toLowerCase().includes(searchedFriend)
+      );
+    });
+    displayUsers(filteredFriends);
+    console.log(filteredFriends);
+  });
+}

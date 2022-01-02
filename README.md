@@ -1,2 +1,3 @@
-# friends-app.github.io
+# friends-app
+
  - [Demo](https://daniab24.github.io/friends-app/)
